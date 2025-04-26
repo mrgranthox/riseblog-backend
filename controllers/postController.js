@@ -40,7 +40,7 @@ export const createPost = async ( req, res ) => {
 
   const tagArray = typeof tags === 'string' ? tags.split(',').map(tag => tag.trim()) : tags;
   
-  const generatedSlug = slug || (
+  const generatedSlug = (slug ? slug.trim() : null) || (
     title
       .trim()
       .toLowerCase()
@@ -89,9 +89,9 @@ export const editPost = async (req, res) => {
     const { title, content, tags, excerpt, slug } = req.body;
     const postId = req.params.id;
 
-    let newSlug = slug;
+    let newSlug = slug ? slug.trim() : null;
 
-    if (!slug && title) {
+    if (!newSlug && title) {
       newSlug = title
         .trim()
         .toLowerCase()
