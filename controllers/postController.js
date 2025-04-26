@@ -40,10 +40,14 @@ export const createPost = async ( req, res ) => {
 
   const tagArray = typeof tags === 'string' ? tags.split(',').map(tag => tag.trim()) : tags;
   
-  const generatedSlug = slug || title
-  .toLowerCase()
-  .replace(/[^a-z0-9]+/g, '-')
-  .replace(/(^-|-$)+/g, '');
+  const generatedSlug = slug || (
+    title
+      .toLowerCase()
+      .normalize("NFD") 
+      .replace(/[\u0300-\u036f]/g, "") 
+      .replace(/[^a-z0-9]+/g, '-') 
+      .replace(/(^-|-$)+/g, '')    
+  );
 
   const generatedExcerpt = excerpt || content.substring(0, 200) + '...';
 
