@@ -42,6 +42,7 @@ export const createPost = async ( req, res ) => {
   
   const generatedSlug = slug || (
     title
+      .trim()
       .toLowerCase()
       .normalize("NFD") 
       .replace(/[\u0300-\u036f]/g, "") 
@@ -88,12 +89,24 @@ export const editPost = async (req, res) => {
     const { title, content, tags, excerpt, slug } = req.body;
     const postId = req.params.id;
 
+    let newSlug = slug;
+
+    if (!slug && title) {
+      newSlug = title
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+    }
+
     const updateData = {
       title,
       content,
       tags,
       excerpt,
-      slug,
+      slug: newSlug,
     };
 
     if (req.file?.path) {
