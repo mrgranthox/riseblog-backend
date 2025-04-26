@@ -4,7 +4,7 @@ import { postModel } from "../models/blogPostModel.js"
 
 export const getAllPosts = async (req, res) => {
   try {
-    const allPosts = await postModel.find().populate('author')
+    const allPosts = await postModel.find().populate('author').sort({ createdAt: -1 });
 
     return res.status(200).json({
       success: true,
