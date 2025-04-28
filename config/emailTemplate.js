@@ -76,7 +76,7 @@ export const EMAIL_VERIF_TEMPLATE = `
       background: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
       font-size: 30px;
       font-weight: bold;
-      color: #1e293b;
+      color:rgb(0, 0, 0);
       letter-spacing: 8px;
       border-radius: 14px;
       font-family: 'Courier New', monospace;
@@ -208,8 +208,7 @@ export const EMAIL_VERIF_TEMPLATE = `
 </body>
 </html>
 
-`
-
+`;
 
 export const PASSWORD_RESET_TEMPLATE = `
 <!DOCTYPE html>
@@ -320,7 +319,7 @@ export const PASSWORD_RESET_TEMPLATE = `
       letter-spacing: 8px;
       font-size: 28px;
       font-weight: 700;
-      color: #1e293b;
+      color:rgb(0, 0, 0);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 -2px 0 rgba(0, 0, 0, 0.08);
     }
 
@@ -471,4 +470,4 @@ export const PASSWORD_RESET_TEMPLATE = `
 </html>
 
 
-`
+`;

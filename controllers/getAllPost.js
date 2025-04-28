@@ -1,19 +1,20 @@
-import { postModel } from "../models/blogPostModel.js"
-
-
+import { postModel } from "../models/blogPostModel.js";
 
 export const getAllPosts = async (req, res) => {
   try {
-    const allPosts = await postModel.find().populate('author').sort({ createdAt: -1 });
+    const allPosts = await postModel
+      .find()
+      .populate("author")
+      .sort({ createdAt: -1 });
 
     return res.status(200).json({
       success: true,
-      postLists: allPosts
-    })
+      postLists: allPosts,
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Server error. Failed to retrieve posts."
+      message: "Server error. Failed to retrieve posts.",
     });
   }
-}
+};

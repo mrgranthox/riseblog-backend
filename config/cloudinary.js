@@ -1,6 +1,6 @@
-import { v2 as cloudinary } from 'cloudinary';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
-import dotenv from 'dotenv';
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -13,8 +13,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'RISEBLOG', 
-    allowed_formats: ['jpeg', 'png', 'jpg'],
+    folder: "RISEBLOG",
+    allowed_formats: ["jpeg", "png", "jpg"],
   },
 });
 
